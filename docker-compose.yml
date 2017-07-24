@@ -1,0 +1,15 @@
+version: '3.0'
+
+# IMPORTANT: services may not contain underscores, they cause problems with
+# host name resolving.
+services:
+
+  tiles-server:
+    image: docker-tilestache:latest-lars
+    ports:
+      - 4455:8080
+    volumes:
+      - .:/tiles
+    command: /srv/tilestache/tilestache-server.py -i '0.0.0.0' -c /tiles/config/tilestache_test.cfg
+    working_dir: /tiles
+
